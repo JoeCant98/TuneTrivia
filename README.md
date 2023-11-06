@@ -8,11 +8,11 @@ To start playing TuneTrivia, follow these simple steps:
 
 ### 1. Connect to the Mobile Web App
 
-Visit [tunetrivia.com](https://tunetrivia.com) on your mobile device's web browser.
+Visit TuneTrivia on your mobile device's web browser.
 
 ### 2. Host the Game on Your Computer
 
-Make sure you have the TuneTrivia main app installed and running on your computer. You can download it from [tunetrivia.com/download](https://tunetrivia.com/download).
+Make sure you have the TuneTrivia main app installed and running on your computer. You can download it by ...
 
 ### 3. Create or Join a Game Session
 
