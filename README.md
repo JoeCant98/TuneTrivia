@@ -24,17 +24,30 @@ Make sure you have the TuneTrivia main app installed and running on your compute
 
 TuneTrivia offers various rounds to keep the music trivia excitement flowing:
 
-#### a. Guess the Song
-Listen to a snippet of a song and guess the title. Test your song recognition skills!
+#### a. Guess the Artist and Title
+Listen to a snippet of a song and guess the artist and title. Test your song recognition skills!
 
 #### b. Guess the Album
-Identify the album from which a snippet of a song is taken. Prove your knowledge of music discography.
+Identify the album from a cover photo. Prove your knowledge of music discography.
 
-#### c. Guess the Artist
-Hear a brief excerpt and name the artist behind the track. Challenge your artist recognition abilities!
+#### c. Match the Lyrics
+Match the Lyrics to the Song. Challenge your lyric recognition abilities!
 
 #### d. First One to Answer
-Be quick on the buzzer! In this round, the first player to correctly answer scores points.
+Be quick on the buzzer! In this round, the first player to correctly guess the song scores points.
+
+### e. Gold or just Old
+Given 6 songs from the same decade (Choice of 70s, 80s, 90s and 00s and 10s) guess which ones are Gold (Popular on Spotify) and which ones are just Old (Lower than X% popularity on Spotify)
+
+### f. Anti-Popularity Contest
+Choose the least popular song. 14 to choose from, two rounds of selection. Lowest scorer for each round gets 3 points, second lowest 2 points, 3rd lowest 1 point and the rest 0.
+
+### g. Spin the Wheel of Time
+Spin the wheel and land on a year. Guess the song from that year.
+
+### h. Guess the year
+Guess the year the track was released, closest wins
+
 
 ## Features
 
