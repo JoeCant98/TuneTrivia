@@ -36,10 +36,10 @@
 
 ## Database:
 
-1. **MongoDB, PostgreSQL, MySQL**
+1. **SQLite**
    - Choose a database that suits your data storage needs.
 
-## Deployment:
+## (Optional) Deployment:
 
 1. **Heroku, Netlify (for the mobile app)**
    - These platforms make it easy to deploy and host your web applications.
@@ -49,7 +49,7 @@
 
 ## Additional Tools:
 
-1. **Postman or Insomnia**
+1. **Postman**
    - These tools can help you test API endpoints during development.
 
 2. **Swagger/OpenAPI**
