@@ -1,6 +1,6 @@
 # TuneTrivia Database Documentation
 
-## Database: SQLite
+## Database: SQLite. Future Redis Implementation to speed up db processes.
 
 TuneTrivia utilizes SQLite, a serverless, self-contained database engine known for its portability and simplicity.
 
