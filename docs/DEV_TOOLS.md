@@ -4,7 +4,6 @@
 
 1. **Frontend Framework: React Native or Flutter**
    - **React Native:** Developed by Facebook, React Native allows you to build cross-platform mobile apps using JavaScript and React.
-   - **Flutter:** Developed by Google, Flutter uses the Dart programming language and provides a rich set of pre-designed widgets for creating attractive UIs.
 
 2. **Web Development: React or Angular**
    - If you choose React Native, familiarity with React for the web can be beneficial.
@@ -17,22 +16,22 @@
 2. **Frontend Framework: React or Angular**
    - If you're using Electron, you can leverage the same frontend framework you used for the mobile app for consistency.
 
-3. **Backend Framework: Node.js with Express, Django, Flask, or similar**
+3. **Backend Framework: Node.js with Flask**
    - For the backend, you'll need a server to handle game logic, user authentication, and communication between the mobile app and the main app.
 
 ## Communication between Mobile and Desktop:
 
-1. **WebSockets or Socket.io**
+1. **Socket.io**
    - To enable real-time communication between the mobile app and the main app, consider using WebSockets or a library like Socket.io.
 
 ## Code Editors:
 
-1. **Visual Studio Code, Atom, Sublime Text**
+1. **Visual Studio Code**
    - Choose a code editor that you are comfortable with for writing and managing your code.
 
 ## Version Control:
 
-1. **Git and GitHub (or GitLab, Bitbucket)**
+1. **GitHub**
    - Use Git for version control, and consider hosting your code on GitHub or a similar platform for collaboration.
 
 ## Database:
