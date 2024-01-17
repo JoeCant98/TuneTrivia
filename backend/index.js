@@ -2,6 +2,8 @@ const express = require('express');
 const http = require('http');
 const socketIo = require('socket.io');
 const sqlite3 = require('sqlite3').verbose();
+const bodyParser = require('body-parser');
+const game = require('./game');
 
 const app = express();
 const server = http.createServer(app);
@@ -11,11 +13,6 @@ const io = socketIo(server);
 const db = new sqlite3.Database('./tunetrivia.db');
 
 // app.js
-
-const express = require('express');
-const bodyParser = require('body-parser');
-const game = require('./game');
-
 app.use(bodyParser.json());
 
 // Endpoint to start a new game

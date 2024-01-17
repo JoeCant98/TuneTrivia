@@ -1,8 +1,8 @@
 const axios = require('axios');
 
 const SPOTIFY_API_BASE_URL = 'https://api.spotify.com/v1';
-const SPOTIFY_CLIENT_ID = 'your_client_id';
-const SPOTIFY_CLIENT_SECRET = 'your_client_secret';
+const SPOTIFY_CLIENT_ID = '2fce5435edd2484e80cb390e0dddebdf';
+const SPOTIFY_CLIENT_SECRET = 'ea96ab16781f468cb32f55343b77962d';
 
 // Function to get an access token from Spotify
 const getAccessToken = async () => {
