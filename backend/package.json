@@ -1,0 +1,15 @@
+{
+  "name": "tunetriviadb",
+  "version": "1.0.0",
+  "description": "Tune Trivia Backend interacts with SQLite Database, Pulls data from Spotify API & Handles Requests from front-end applications.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Joe Graham",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "express.js": "^1.0.0"
+  }
+}
