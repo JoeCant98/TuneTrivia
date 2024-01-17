@@ -3,6 +3,7 @@ const axios = require('axios');
 const SPOTIFY_API_BASE_URL = 'https://api.spotify.com/v1';
 const SPOTIFY_CLIENT_ID = '2fce5435edd2484e80cb390e0dddebdf';
 const SPOTIFY_CLIENT_SECRET = 'ea96ab16781f468cb32f55343b77962d';
+// var playlist_id = '37i9dQZF1EVHGWrwldPRtj?si=373da6b8744f4553';
 
 // Function to get an access token from Spotify
 const getAccessToken = async () => {
@@ -23,28 +24,30 @@ const getAccessToken = async () => {
   }
 };
 
-// Function to search for tracks based on a genre
-const searchTracksByGenre = async (genre, accessToken) => {
-  try {
-    const response = await axios.get(`${SPOTIFY_API_BASE_URL}/search`, {
-      params: {
-        q: `genre:"${genre}"`,
-        type: 'track',
-        limit: 10,
-      },
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-    });
-
-    return response.data.tracks.items;
-  } catch (error) {
-    console.error('Error searching for tracks on Spotify:', error.response ? error.response.data : error.message);
-    throw error;
-  }
-};
+// Function to search for tracks based on a Playlist and get a random track
+const getRandomTrackByPlaylistId = async (playlist_id, accessToken) => {
+    try {
+      const response = await axios.get(
+        `${SPOTIFY_API_BASE_URL}/playlists/${playlist_id}/tracks`,
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
+      );
+  
+      const tracks = response.data.items;
+      // Get a random track from the playlist
+      const randomTrack = tracks[Math.floor(Math.random() * tracks.length)];
+  
+      return randomTrack.track;
+    } catch (error) {
+      console.error('Error getting random track from Spotify:', error);
+      throw error;
+    }
+  };
 
 module.exports = {
   getAccessToken,
-  searchTracksByGenre,
+  getRandomTrackByPlaylistId,
 };

@@ -9,11 +9,9 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server);
 
+app.use(bodyParser.json());
 // Initialize SQLite database
 const db = new sqlite3.Database('./tunetrivia.db');
-
-// app.js
-app.use(bodyParser.json());
 
 // Endpoint to start a new game
 app.post('/api/start-game', async (req, res) => {
@@ -23,11 +21,20 @@ app.post('/api/start-game', async (req, res) => {
 });
 
 // Endpoint to handle the "Guess the Year" round
-app.post('/api/round/guess-year', (req, res) => {
-  const { userYear } = req.body;
-  const result = game.handleGuessYearRound(userYear);
+app.post('/api/round/guess-year', async (req, res) => {
+  const { playlist_id } = req.body;
+  const result = await game.handleGuessYearRound(playlist_id);
+  console.log(result);
   res.json(result);
 });
+
+// Endpoint to handle the "Guess the Year" round
+app.post('/api/round/guess-year/guess', async (req, res) => {
+    const { guess } = req.body;
+    const result = await game.handleSubmitAnswer(guess);
+    console.log(result);
+    res.json(result);
+  });
 
 const PORT = process.env.PORT || 4001;
 
