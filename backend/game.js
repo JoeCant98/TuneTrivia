@@ -9,7 +9,6 @@ let gameState = {
 };
 
 
-
 // Function to start a new game
 const startNewGame = async (genre) => {
   try {
