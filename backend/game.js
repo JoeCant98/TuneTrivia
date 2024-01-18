@@ -1,6 +1,7 @@
 // game.js
 
 const spotify = require('./spotify');
+const {v4: uuidv4 } = require('uuid');
 
 // Placeholder for storing game state (replace this with a proper data structure for your game)
 let gameState = {
@@ -9,20 +10,24 @@ let gameState = {
 };
 
 
-// Function to start a new game
-const startNewGame = async (genre) => {
+// Function to create a new game
+const createNewGame = async (socket, playlist_id, round) => {
   try {
-    // Get an access token from Spotify
-    const accessToken = await spotify.getAccessToken();
+    console.log('Creating game session')
+    // Generate a unique UUID for the game session
+    const uuid = uuidv4();
 
-    // Search for tracks based on the predefined genre
-    const tracks = await spotify.getRandomTrackByGenre(genre, accessToken);
-
-    // Set the current round to the "Guess the Year" round with the retrieved tracks
-    gameState.currentRound = {
-      type: 'guess-year',
-      tracks,
+    // Create a new game with specified properties
+    // Write the game session to the database with playlist_id, round, and UUID (you'll need to implement this part)
+    // For simplicity, I'm just returning the UUID for now
+    const gameSessionInfo = {
+      playlist_id,
+      round,
+      uuid,
     };
+
+    // Emit 'gameCreated' event to the client with game information
+    socket.emit('gameCreated', { info: gameSessionInfo });
 
     return { success: true, message: 'Game started successfully' };
   } catch (error) {
@@ -87,7 +92,7 @@ const handleSubmitAnswer = async (guess) => {
   };
 
 module.exports = {
-  startNewGame,
+  createNewGame,
   handleGuessYearRound,
   handleSubmitAnswer,
 };

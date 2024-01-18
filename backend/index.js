@@ -1,22 +1,37 @@
 const express = require('express');
 const http = require('http');
 const socketIo = require('socket.io');
+const configureSocket = require('./socket');
+const cors = require('cors');
 const sqlite3 = require('sqlite3').verbose();
 const bodyParser = require('body-parser');
 const game = require('./game');
-
 const app = express();
 const server = http.createServer(app);
-const io = socketIo(server);
+const io = socketIo(server, {
+  cors: {
+    origin: 'http://localhost:3000',
+    methods: ['GET', 'POST'],
+  }
+});
+configureSocket(io);
 
 app.use(bodyParser.json());
 // Initialize SQLite database
 const db = new sqlite3.Database('./tunetrivia.db');
 
+// Endpoint to create a new game
+app.post('/api/create-game', async (req, res) => {
+  const { playlist_id } = req.body;
+  const { rounds } = req.body;
+  const gameSession = await game.createNewGame(playlist_id, rounds);
+  res.json(result);
+});
+
 // Endpoint to start a new game
 app.post('/api/start-game', async (req, res) => {
-  const { genre } = req.body;
-  const result = await game.startNewGame(genre);
+  const { session_id } = req.body;
+  const gameSession = await game.createNewGame(playlist_id, rounds);
   res.json(result);
 });
 
