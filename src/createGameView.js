@@ -47,6 +47,8 @@ const CreateGameView = () => {
 
   return (
     <div>
+      {!gameDetails (
+      <>
       <h1>TuneTrivia - Create Game</h1>
       <label>
         Playlist ID:
@@ -62,8 +64,10 @@ const CreateGameView = () => {
       </label>
       <br />
       <button onClick={createGame}>Create Game</button>
+      </>
+      )}
 
-      {gameDetails && (
+      {gameDetails && !gameStarted (
         <div>
           <h2>Game Details</h2>
           <p>Playlist ID: {gameDetails.playlist_id}</p>
