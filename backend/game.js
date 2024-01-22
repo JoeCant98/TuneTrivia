@@ -1,6 +1,7 @@
 // game.js
 
 const spotify = require('./spotify');
+const dbInteraction = require('./dbInteraction');
 const {v4: uuidv4 } = require('uuid');
 
 // Placeholder for storing game state (replace this with a proper data structure for your game)
@@ -10,30 +11,34 @@ let gameState = {
 };
 
 
-// Function to create a new game
-const createNewGame = async (socket, playlist_id, round) => {
+// Function to create a new game and handle socket rooms
+const createNewGame = async (socket, playlist_id, rounds) => {
   try {
-    console.log('Creating game session')
-    // Generate a unique UUID for the game session
-    const uuid = uuidv4();
+    // Generate a unique identifier for the game (you can use a library like uuid)
+    const uuid = uuidv4().substring(0, 4);
 
-    // Create a new game with specified properties
-    // Write the game session to the database with playlist_id, round, and UUID (you'll need to implement this part)
-    // For simplicity, I'm just returning the UUID for now
-    const gameSessionInfo = {
-      playlist_id,
-      round,
-      uuid,
-    };
+    // Insert game information into the database
+    await dbInteraction.createNewGameInDB(uuid, playlist_id, rounds);
 
-    // Emit 'gameCreated' event to the client with game information
-    socket.emit('gameCreated', { info: gameSessionInfo });
+    console.log(`User ${socket.id} created ${uuid}`);
 
-    return { success: true, message: 'Game started successfully' };
+    // Emit an event to the client to inform them that the game was created successfully
+    socket.emit('gameCreated', { info: { uuid, playlist_id, rounds } });
+
+    return { success: true, uuid, playlist_id, rounds };
   } catch (error) {
-    console.error('Error starting the game:', error);
-    return { success: false, error: 'Internal Server Error' };
+    console.error('Error creating game:', error);
+    // Handle the error, emit an error event, or send an error message to the client if needed
+    return { success: false, error: 'Error creating game' };
   }
+};
+
+const startGame = (uuid) => {
+  // Emit an event to all clients in the room identified by the game UUID
+  // dbInteraction.startGame(uuid); // write function to update status in db
+  io.to(uuid).emit('gameStarted', { success: true });
+
+  // Additional logic to handle starting the game
 };
 
 // Function to handle the "Guess the Year" round
@@ -95,4 +100,5 @@ module.exports = {
   createNewGame,
   handleGuessYearRound,
   handleSubmitAnswer,
+  startGame
 };

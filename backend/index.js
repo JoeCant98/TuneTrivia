@@ -6,6 +6,7 @@ const cors = require('cors');
 const sqlite3 = require('sqlite3').verbose();
 const bodyParser = require('body-parser');
 const game = require('./game');
+dbInteraction = require('./dbInteraction');
 const app = express();
 const server = http.createServer(app);
 const io = socketIo(server, {
@@ -19,6 +20,8 @@ configureSocket(io);
 app.use(bodyParser.json());
 // Initialize SQLite database
 const db = new sqlite3.Database('./tunetrivia.db');
+// Create 'games' table in the database if it doesn't already exist
+dbInteraction.createGamesTable();
 
 // Endpoint to create a new game
 app.post('/api/create-game', async (req, res) => {
