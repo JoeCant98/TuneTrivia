@@ -47,7 +47,7 @@ const CreateGameView = () => {
 
   return (
     <div>
-      {!gameDetails (
+      {!gameDetails && (
       <>
       <h1>TuneTrivia - Create Game</h1>
       <label>
@@ -67,7 +67,7 @@ const CreateGameView = () => {
       </>
       )}
 
-      {gameDetails && !gameStarted (
+      {gameDetails && !gameStarted && (
         <div>
           <h2>Game Details</h2>
           <p>Playlist ID: {gameDetails.playlist_id}</p>
