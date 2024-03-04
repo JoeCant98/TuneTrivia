@@ -2,8 +2,8 @@ import { initializeApp } from 'firebase/app';
 import { getAnalytics } from 'firebase/analytics'
 // import { initializeAppCheck, ReCaptchaEnterpriseProvider } from 'firebase/app-check';
 // import { getAuth } from 'firebase/auth';
-// import { getDatabase } from 'firebase/database';
-// import { getFirestore } from 'firebase/firestore';
+import { getDatabase } from 'firebase/database';
+import { getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = {
    apiKey: process.env.APIKEY,
@@ -28,5 +28,5 @@ const app = initializeApp(firebaseConfig);
 export default app;
 export const analytics = getAnalytics(app)
 // export const auth = getAuth(app);
-// export const firestore = getFirestore(app);
-// export const firebaseRTDB = getDatabase(app);
+export const firestore = getFirestore(app);
+export const firebaseRTDB = getDatabase(app);

@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import { useLocation } from 'react-router-dom';
-import logo from '../../../../../../public/icons/logo-tunetrivia.png';
+import logo from '../../../../../../public/icons/tunetrivia.png';
 import useThemeContext from '../../../../context/theme/hooks/useThemeContext';
 import { StyledLink } from '../footer/Style';
 import NavItems from '../utils/navItems';
