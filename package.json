@@ -1,14 +1,25 @@
 {
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "f-install": "cd frontend && npm install",
+    "b-install": "cd backend && npm install",
+    "app-install": "npm run f-install && npm run b-install && npm install",
+    "start": "cd frontend && npm start",
+    "f-start": "cd frontend && npm start",
+    "b-start": "cd backend && firebase serve",
+    "app-start": "concurrently \"npm run f-start\" \"npm run b-start\" --prefix-colors \"bgBlue.bold,bgMagenta.bold\" --names \"FRONTEND,BACKEND\"",
+    "f-lint": "cd frontend && npm run lint-ts",
+    "b-lint": "cd backend && npm run lint",
+    "f-deploy": "cd frontend && npm run deploy",
+    "b-deploy": "cd backend && firebase deploy",
+    "app-deploy": "npm run f-deploy && npm run b-deploy",
+    "git-prune-remote": "git remote update origin --prune",
+    "git-prune-local": "npx git-removed-branches --prune --force",
+    "git-sync": "git pull && npm run git-prune-remote && npm run git-prune-local"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "engines": {
+    "node": "18.19.0"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
   }
 }
